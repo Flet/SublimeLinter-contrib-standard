@@ -18,7 +18,7 @@ class Standard(NodeLinter):
     """Provides an interface to standard."""
 
     syntax = ('javascript', 'html', 'javascriptnext', 'javascript 6to5')
-    cmd = 'standard'
+    cmd = 'standard --verbose'
     version_args = '--version'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 2.3.0'
