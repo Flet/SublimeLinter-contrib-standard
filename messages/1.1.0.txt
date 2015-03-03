@@ -1,0 +1,19 @@
+SublimeLinter-contrib-standard
+
+Minimum required version of standard is now 2.10.0.
+
+Install the latest version of standard:
+npm install -g standard
+
+
+NEW FEATURE
+------------
+
+A new "Build System" has been added: "JavaScript Standard Style Formatter"
+
+Press Ctrl+B to reformat your JavaScript to Standard Style!
+
+This uses `maxogden/standard-format` to do the formatting, which is still
+a bit experimental. File formatting bugs here:
+https://github.com/maxogden/standard-format/issues
+

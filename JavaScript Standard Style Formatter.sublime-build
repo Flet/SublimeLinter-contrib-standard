@@ -1,0 +1,5 @@
+{
+    "cmd": ["standard", "--format", "$file"],
+    "file_regex": "",
+    "selector": "source.js"
+}
