@@ -13,9 +13,9 @@ Before using this plugin, you must ensure that `standard` is installed on your s
 
 1. Install [Node.js](http://nodejs.org) (and [npm](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) on Linux).
 
-1. Install `standard` by typing the following in a terminal:
+1. Install `standard` by typing the following command in a terminal:
    ```
-   npm install -g standard
+   npm install -g standard standard-fornmat
    ```
 
 1. If you are using `nvm` and `zsh`, ensure that the line to load `nvm` is in `.zshenv` and not `.zshrc`.
@@ -23,7 +23,7 @@ Before using this plugin, you must ensure that `standard` is installed on your s
 1. If you are using `zsh` and `oh-my-zsh`, do not load the `nvm` plugin for `oh-my-zsh`.
 
 
-**Note:** This plugin requires `standard` 2.3.0 or later.
+**Note:** This plugin requires `standard` 2.10.0 or later and `standard-format` 1.2.3 or later for formatting
 
 ### Linter configuration
 In order for `standard` to be executed by SublimeLinter, you must ensure that its path is available to SublimeLinter. Before going any further, please read and follow the steps in [“Finding a linter executable”](http://sublimelinter.readthedocs.org/en/latest/troubleshooting.html#finding-a-linter-executable) through “Validating your PATH” in the documentation.
@@ -38,6 +38,16 @@ To install via Package Control, do the following:
 1. Within Sublime Text, bring up the [Command Palette][cmd] and type `install`. Among the commands you should see `Package Control: Install Package`. If that command is not highlighted, use the keyboard or mouse to select it. There will be a pause of a few seconds while Package Control fetches the list of available plugins.
 
 1. When the plugin list appears, type `standard`. Among the entries you should see `SublimeLinter-contrib-standard`. If that entry is not highlighted, use the keyboard or mouse to select it.
+
+## Formatting using `standard-format`
+Automatically reformat a file to JavaScript Standard Style by doing one of the following:
+- open the [Command Palette][cmd] and type `Format: JavaScript Standard Style`.
+- Press the shortcut `ctrl+alt+f`
+
+If the shortcut is already mapped or you wish to have a different key mapped, open Preferences > Key Bindings (User) and map a key to the `standard_format` command like so:
+```
+{ "keys": ["ctrl+alt+f"], "command": "standard_format", "context": [{"key": "selector", "operator": "equal", "operand": "source.js,source.json"}] },
+```
 
 ## Settings
 For general information on how SublimeLinter works with settings, please see [Settings][settings]. For information on generic linter settings, please see [Linter Settings][linter-settings].

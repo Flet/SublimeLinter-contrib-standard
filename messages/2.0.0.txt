@@ -1,0 +1,28 @@
+SublimeLinter-contrib-standard
+
+Minimum required version of standard is now 2.10.0.
+
+Install the latest version of standard and standard-format
+npm install -g standard standard-format
+
+
+New Technique for Formatting Text
+----------------------------------
+
+The "Build System" has been removed as it was a bit buggy and strange.
+
+Instead, format a file to JavaScript Standard Style by doing one of the following:
+
+    - open the [Command Palette][cmd] and type:
+        Format: JavaScript Standard Style
+
+    - Use the default shortcut: `ctrl+alt+f`
+
+If the shortcut is already mapped or you wish to have a different key mapped:
+    - open Preferences > Key Bindings (User) and map a key to the `standard_format` command:
+
+{ "keys": ["ctrl+alt+f"], "command": "standard_format", "context": [{"key": "selector", "operator": "equal", "operand": "source.js,source.json"}] },
+
+NOTE: be sure to install standard and standard-format:
+
+npm install -g standard standard-format
