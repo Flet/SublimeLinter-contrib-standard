@@ -30,7 +30,7 @@ class StandardFormatCommand(sublime_plugin.TextCommand):
         result = util.communicate(cmd, code=allcode)
 
         if len(result) > 0:
-            self.view.replace(edit, reg, result)
+            self.view.replace(edit, reg, result[:-1])
         else:
             args = cmd, code = reg, output_stream = util.STREAM_STDERR
             error = util.communicate(args)
