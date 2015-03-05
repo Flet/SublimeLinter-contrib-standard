@@ -15,7 +15,7 @@ Before using this plugin, you must ensure that `standard` is installed on your s
 
 1. Install `standard` by typing the following command in a terminal:
    ```
-   npm install -g standard standard-fornmat
+   npm install -g standard standard-format
    ```
 
 1. If you are using `nvm` and `zsh`, ensure that the line to load `nvm` is in `.zshenv` and not `.zshrc`.
