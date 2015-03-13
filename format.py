@@ -9,7 +9,7 @@
 #
 
 """This module exports the StandardFormatCommand class."""
-
+import re
 import sublime
 import sublime_plugin
 from SublimeLinter.lint import util
@@ -43,12 +43,18 @@ class StandardFormatCommand(sublime_plugin.TextCommand):
         cmd.append(util.which("standard"))
         cmd.append("--format")
 
-        if not region.empty():
-                s = v.substr(region)
-                s = util.communicate(cmd, code=s)
-                if len(s) > 0:
-                    v.replace(edit, region, s)
-                else:
-                    args = cmd, code = s, output_stream = util.STREAM_STDERR
-                    error = util.communicate(args)
-                    sublime.error_message(error)
+        prevline = v.substr(v.line(region.begin()-1))
+        indentmatch = re.match("^([ ]*)", prevline)
+        indent = ""
+        if(indentmatch):
+            indent = indentmatch.group()
+
+        s = v.substr(region)
+        s = util.communicate(cmd, code=s)
+        if len(s) > 0:
+            s = re.sub("^", indent , string = s, flags = re.M)
+            v.replace(edit, region, s)
+        else:
+            args = cmd, code = s, output_stream = util.STREAM_STDERR
+            error = util.communicate(args)
+            sublime.error_message(error)
