@@ -21,17 +21,34 @@ class StandardFormatCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
         """Command to run when standard_format is executed."""
+        v = self.view
+        regions = []
+        sel = v.sel()
+
+        for region in sel:
+            if not region.empty():
+                regions.append(region)
+
+        if len(regions) < 1:
+            # No selected regions, so format the whole file.
+            allreg = sublime.Region(0, v.size())
+            regions.append(allreg)
+
+        for region in regions:
+            self.doFormat(edit, region, v)
+
+    def doFormat(self, edit, region, v):
+        """Format a region of text using standard --format command."""
         cmd = []
+        cmd.append(util.which("standard"))
+        cmd.append("--format")
 
-        cmd.insert(0, util.which("standard-format"))
-        reg = sublime.Region(0, self.view.size())
-        allcode = self.view.substr(reg)
-
-        result = util.communicate(cmd, code=allcode)
-
-        if len(result) > 0:
-            self.view.replace(edit, reg, result[:-1])
-        else:
-            args = cmd, code = reg, output_stream = util.STREAM_STDERR
-            error = util.communicate(args)
-            sublime.error_message(error)
+        if not region.empty():
+                s = v.substr(region)
+                s = util.communicate(cmd, code=s)
+                if len(s) > 0:
+                    v.replace(edit, region, s)
+                else:
+                    args = cmd, code = s, output_stream = util.STREAM_STDERR
+                    error = util.communicate(args)
+                    sublime.error_message(error)

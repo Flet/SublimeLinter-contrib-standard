@@ -1,0 +1,9 @@
+SublimeLinter-contrib-standard
+-------------------------------
+
+- Minimum required version of standard is now 2.11.0.
+- standard-format is no longer required.
+
+NEW FEATURE
+- Its now possible to format only the text thats selected.
+- If no text is selected, the entire file will be formatted.
