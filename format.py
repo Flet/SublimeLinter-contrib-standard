@@ -13,7 +13,35 @@
 import sublime
 import sublime_plugin
 from SublimeLinter.lint import util
+import os
 
+settings = None
+
+
+def plugin_loaded():
+    global settings
+    settings = sublime.load_settings(
+        "SublimeLinter-contrib-standard.sublime-settings")
+
+def is_javascript(view):
+    """Checks if the current view is javascript or not.  Used pre_save event"""
+    # Check the file extension
+    name = view.file_name()
+    excludes = set(settings.get('excludes', []))
+    includes = set(settings.get('includes', ['js']))
+    if name and os.path.splitext(name)[1][1:] in includes - excludes:
+        return True
+    # If it has no name (?) or it's not a JS, check the syntax
+    syntax = view.settings().get("syntax")
+    if syntax and "javascript" in syntax.split("/")[-1].lower():
+        return True
+    return False
+
+class StandardFormatEventListener(sublime_plugin.EventListener):
+
+    def on_pre_save(self, view):
+        if settings.get("format_on_save") and is_javascript(view):
+            view.run_command("standard_format")
 
 class StandardFormatCommand(sublime_plugin.TextCommand):
 
