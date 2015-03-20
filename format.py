@@ -41,6 +41,7 @@ class StandardFormatCommand(sublime_plugin.TextCommand):
         """Format a region of text using standard --format command."""
         cmd = []
         cmd.append(util.which("standard"))
+        cmd.append("--stdin")
         cmd.append("--format")
 
         if not region.empty():
