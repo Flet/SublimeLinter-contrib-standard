@@ -18,10 +18,10 @@ class Standard(NodeLinter):
     """Provides an interface to standard."""
 
     syntax = ('javascript', 'html', 'javascriptnext', 'javascript 6to5')
-    cmd = 'standard --verbose'
+    cmd = 'standard --stdin --verbose'
     version_args = '--version'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
-    version_requirement = '>= 2.11.0'
+    version_requirement = '>= 3.2.0'
     regex = r'^\s.+:(?P<line>\d+):(?P<col>\d+):(?P<message>.+)'
     selectors = {
         'html': 'source.js.embedded.html'
