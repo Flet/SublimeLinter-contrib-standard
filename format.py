@@ -13,6 +13,51 @@
 import sublime
 import sublime_plugin
 from SublimeLinter.lint import util
+import os
+
+SETTINGS_FILE = "SL-contrib-standard.sublime-settings"
+
+settings = None
+
+
+def plugin_loaded():
+    global settings
+    settings = sublime.load_settings(SETTINGS_FILE)
+
+
+def is_javascript(view):
+    """Checks if the current view is javascript or not.  Used pre_save event"""
+    # Check the file extension
+    name = view.file_name()
+    excludes = set(settings.get('excludes', []))
+    includes = set(settings.get('includes', ['js']))
+    if name and os.path.splitext(name)[1][1:] in includes - excludes:
+        return True
+    # If it has no name (?) or it's not a JS, check the syntax
+    syntax = view.settings().get("syntax")
+    if syntax and "javascript" in syntax.split("/")[-1].lower():
+        return True
+    return False
+
+
+class StandardFormatEventListener(sublime_plugin.EventListener):
+
+    def on_pre_save(self, view):
+        if settings.get("format_on_save") and is_javascript(view):
+            view.run_command("standard_format")
+
+
+class ToggleStandardFormatCommand(sublime_plugin.TextCommand):
+
+    def run(self, edit):
+        if settings.get('format_on_save', False):
+            settings.set('format_on_save', False)
+        else:
+            settings.set('format_on_save', True)
+        sublime.save_settings(SETTINGS_FILE)
+
+    def is_checked(self):
+        return settings.get('format_on_save', False)
 
 
 class StandardFormatCommand(sublime_plugin.TextCommand):
@@ -45,11 +90,11 @@ class StandardFormatCommand(sublime_plugin.TextCommand):
         cmd.append("--format")
 
         if not region.empty():
-                s = v.substr(region)
-                s = util.communicate(cmd, code=s)
-                if len(s) > 0:
-                    v.replace(edit, region, s)
-                else:
-                    args = cmd, code = s, output_stream = util.STREAM_STDERR
-                    error = util.communicate(args)
-                    sublime.error_message(error)
+            s = v.substr(region)
+            s = util.communicate(cmd, code=s)
+            if len(s) > 0:
+                v.replace(edit, region, s)
+            else:
+                args = cmd, code = s, output_stream = util.STREAM_STDERR
+                error = util.communicate(args)
+                sublime.error_message(error)
