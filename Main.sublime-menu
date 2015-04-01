@@ -10,21 +10,21 @@
         "children":
         [
           {
-            "caption": "GoSublime",
+            "caption": "SublimeLinter-standard",
             "children":
             [
               {
                 "caption": "Settings – Default",
                 "command": "open_file",
                 "args": {
-                  "file": "${packages}/SublimeLinter-contrib-standard/SublimeLinter-contrib-standard.sublime-settings"
+                  "file": "${packages}/SublimeLinter-contrib-standard/SL-contrib-standard.sublime-settings"
                 }
               },
               {
                 "caption": "Settings – User",
                 "command": "open_file",
                 "args": {
-                  "file": "${packages}/User/SublimeLinter-contrib-standard.sublime-settings"
+                  "file": "${packages}/User/SL-contrib-standard.sublime-settings"
                 }
               },
               { "caption": "-" },
@@ -57,7 +57,7 @@
                 "caption": "Read Me",
                 "command": "open_file",
                 "args": {
-                  "file": "${packages}/GoSublime/README.md"
+                  "file": "${packages}/SublimeLinter-contrib-standard/README.md"
                 }
               },
               { "caption": "-" },
@@ -65,8 +65,14 @@
                 "caption": "License (MIT)",
                 "command": "open_file",
                 "args": {
-                  "file": "${packages}/GoSublime/LICENSE"
+                  "file": "${packages}/SublimeLinter-contrib-standard/LICENSE"
                 }
+              },
+              { "caption": "-" },
+              {
+                  "command": "toggle_standard_format",
+                  "caption": "Format On Save",
+                  "checkbox": true
               }
             ]
           }

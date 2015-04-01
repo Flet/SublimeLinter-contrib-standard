@@ -1,3 +1,20 @@
 [
-    { "caption": "Format: JavaScript Standard Style", "command": "standard_format" }
+    { 
+      "caption": "SublimeLinter-standard: Format current file", 
+      "command": "standard_format" 
+    },
+    {
+      "caption": "SublimeLinter-standard: Toggle format on save",
+      "command": "toggle_standard_format"
+    },
+    {
+        "caption": "SublimeLinter-standard: Settings - Default",
+        "command": "open_file",
+        "args": {"file": "${packages}/SublimeLinter-contrib-standard/SL-contrib-standard.sublime-settings"}
+    },
+    {
+        "caption": "SublimeLinter-standard: Settings - User",
+        "command": "open_file",
+        "args": {"file": "${packages}/User/SL-contrib-standard.sublime-settings"}
+    }
 ]

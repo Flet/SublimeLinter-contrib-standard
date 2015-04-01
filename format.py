@@ -15,13 +15,14 @@ import sublime_plugin
 from SublimeLinter.lint import util
 import os
 
+SETTINGS_FILE = "SL-contrib-standard.sublime-settings"
+
 settings = None
 
 
 def plugin_loaded():
     global settings
-    settings = sublime.load_settings(
-        "SublimeLinter-contrib-standard.sublime-settings")
+    settings = sublime.load_settings(SETTINGS_FILE)
 
 
 def is_javascript(view):
@@ -44,6 +45,19 @@ class StandardFormatEventListener(sublime_plugin.EventListener):
     def on_pre_save(self, view):
         if settings.get("format_on_save") and is_javascript(view):
             view.run_command("standard_format")
+
+
+class ToggleStandardFormatCommand(sublime_plugin.TextCommand):
+
+    def run(self, edit):
+        if settings.get('format_on_save', False):
+            settings.set('format_on_save', False)
+        else:
+            settings.set('format_on_save', True)
+        sublime.save_settings(SETTINGS_FILE)
+
+    def is_checked(self):
+        return settings.get('format_on_save', False)
 
 
 class StandardFormatCommand(sublime_plugin.TextCommand):
