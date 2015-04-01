@@ -23,6 +23,7 @@ def plugin_loaded():
     settings = sublime.load_settings(
         "SublimeLinter-contrib-standard.sublime-settings")
 
+
 def is_javascript(view):
     """Checks if the current view is javascript or not.  Used pre_save event"""
     # Check the file extension
@@ -37,11 +38,13 @@ def is_javascript(view):
         return True
     return False
 
+
 class StandardFormatEventListener(sublime_plugin.EventListener):
 
     def on_pre_save(self, view):
         if settings.get("format_on_save") and is_javascript(view):
             view.run_command("standard_format")
+
 
 class StandardFormatCommand(sublime_plugin.TextCommand):
 
@@ -73,11 +76,11 @@ class StandardFormatCommand(sublime_plugin.TextCommand):
         cmd.append("--format")
 
         if not region.empty():
-                s = v.substr(region)
-                s = util.communicate(cmd, code=s)
-                if len(s) > 0:
-                    v.replace(edit, region, s)
-                else:
-                    args = cmd, code = s, output_stream = util.STREAM_STDERR
-                    error = util.communicate(args)
-                    sublime.error_message(error)
+            s = v.substr(region)
+            s = util.communicate(cmd, code=s)
+            if len(s) > 0:
+                v.replace(edit, region, s)
+            else:
+                args = cmd, code = s, output_stream = util.STREAM_STDERR
+                error = util.communicate(args)
+                sublime.error_message(error)
