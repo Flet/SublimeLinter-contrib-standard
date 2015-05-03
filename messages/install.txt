@@ -8,3 +8,7 @@ Before this plugin will activate, you *must*
 follow the installation instructions here:
 
 https://github.com/Flet/SublimeLinter-contrib-standard
+
+Want to automatically format your text? 
+Install StandardFormat from package control!
+(https://github.com/bcomnes/sublime-standard-format)

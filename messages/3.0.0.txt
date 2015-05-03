@@ -1,0 +1,7 @@
+SublimeLinter-contrib-standard
+-------------------------------
+- updated minimum standard version to 3.7.2
+  - get the latest now: npm install -g standard
+- Formatting has been removed from this plugin.
+- Install StandardFormat from package control instead!
+- (https://github.com/bcomnes/sublime-standard-format)

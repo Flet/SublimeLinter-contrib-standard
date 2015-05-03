@@ -1,6 +1,0 @@
-[
-	{
-		"keys": ["ctrl+alt+f"], "command": "standard_format",
-		"context": [{"key": "selector", "operator": "equal", "operand": "source.js,source.json"}]
-	}
-]

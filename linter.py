@@ -21,7 +21,7 @@ class Standard(NodeLinter):
     cmd = 'standard --stdin --verbose'
     version_args = '--version'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
-    version_requirement = '>= 3.2.0'
+    version_requirement = '>= 3.7.2'
     regex = r'^\s.+:(?P<line>\d+):(?P<col>\d+):(?P<message>.+)'
     selectors = {
         'html': 'source.js.embedded.html'
