@@ -1,0 +1,3 @@
+SublimeLinter-contrib-standard
+-------------------------------
+- Removed missing format command from command menu
