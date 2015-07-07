@@ -36,15 +36,10 @@ To install via Package Control, do the following:
 
 1. When the plugin list appears, type `standard`. Among the entries you should see `SublimeLinter-contrib-standard`. If that entry is not highlighted, use the keyboard or mouse to select it.
 
-## Formatting using `standard --format`
-Automatically reformat a file to JavaScript Standard Style by doing one of the following:
-- open the [Command Palette][cmd] and type `Format: JavaScript Standard Style`.
-- Press the shortcut `ctrl+alt+f`
+## Automatic Formatting
+Want to automatically format your text? 
+Install **StandardFormat** from package control! (Check the [sublime-standard-format](https://github.com/bcomnes/sublime-standard-format) repository for details)
 
-If the shortcut is already mapped or you wish to have a different key mapped, open Preferences > Key Bindings (User) and map a key to the `standard_format` command like so:
-```
-{ "keys": ["ctrl+alt+f"], "command": "standard_format", "context": [{"key": "selector", "operator": "equal", "operand": "source.js,source.json"}] },
-```
 
 ## Settings
 For general information on how SublimeLinter works with settings, please see [Settings][settings]. For information on generic linter settings, please see [Linter Settings][linter-settings].
