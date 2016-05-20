@@ -26,3 +26,5 @@ class Standard(NodeLinter):
     selectors = {
         'html': 'source.js.embedded.html'
     }
+
+    @classmethod
