@@ -28,3 +28,10 @@ class Standard(NodeLinter):
     }
 
     @classmethod
+    def lint_view(cls, view, filename, code, hit_time, callback):
+        if code:
+            match = re.match(r'(^.*\n)\s+$')
+            if match:
+                code = m.group(1)
+        super(Standard, cls).lint_view(view, filename, code, hit_time, callback)
+
