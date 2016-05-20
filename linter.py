@@ -11,6 +11,7 @@
 """This module exports the Standard plugin class."""
 
 from SublimeLinter.lint import NodeLinter
+import re
 
 
 class Standard(NodeLinter):
@@ -27,11 +28,17 @@ class Standard(NodeLinter):
         'html': 'source.js.embedded.html'
     }
 
-    @classmethod
-    def lint_view(cls, view, filename, code, hit_time, callback):
-        if code:
-            match = re.match(r'(^.*\n)\s+$')
+    html_pattern = re.compile(r'(^.*\n)\s+$', re.DOTALL)
+    
+    def run(self, cmd, code):
+        """
+        If HTML syntax and the last line is just whitespace,
+        remove it, since that is probably just space before closing
+        script tag
+        """
+        if code and self.syntax == 'html':
+            match = self.html_pattern.match(code)
             if match:
-                code = m.group(1)
-        super(Standard, cls).lint_view(view, filename, code, hit_time, callback)
+                code = match.group(1)
+        return super(Standard, self).run(cmd, code)
 
