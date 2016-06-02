@@ -1,0 +1,7 @@
+SublimeLinter-contrib-standard
+-------------------------------
+
+3.1.1
+
+- Will not show an error for space before a closing script tag.
+- Thanks @ncrawlins!
