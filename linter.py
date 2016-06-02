@@ -15,7 +15,6 @@ import re
 
 
 class Standard(NodeLinter):
-
     """Provides an interface to standard."""
 
     syntax = ('javascript', 'html', 'javascriptnext', 'javascript 6to5', 'javascript (babel)')
@@ -29,11 +28,12 @@ class Standard(NodeLinter):
     }
 
     html_pattern = re.compile(r'(^.*\n)\s+$', re.DOTALL)
-    
+
     def run(self, cmd, code):
         """
-        If HTML syntax and the last line is just whitespace,
-        remove it, since that is probably just space before closing
+        If HTML syntax and the last line is just whitespace then remove it.
+
+        Its probably just space before closing.
         script tag
         """
         if code and self.syntax == 'html':
@@ -41,4 +41,3 @@ class Standard(NodeLinter):
             if match:
                 code = match.group(1)
         return super(Standard, self).run(cmd, code)
-
