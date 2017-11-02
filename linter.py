@@ -29,6 +29,12 @@ class Standard(NodeLinter):
 
     html_pattern = re.compile(r'(^.*\n)\s+$', re.DOTALL)
 
+    npm_name = 'standard'
+    defaults = {
+        'enable_if_dependency': True,
+        'disable_if_not_dependency': True
+    }
+
     def run(self, cmd, code):
         """
         If HTML syntax and the last line is just whitespace then remove it.
