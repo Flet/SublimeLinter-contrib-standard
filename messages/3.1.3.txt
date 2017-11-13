@@ -1,0 +1,13 @@
+SublimeLinter-contrib-standard
+-------------------------------
+
+3.1.3
+
+- Remove the default setting to disable the linter if standard is not a project
+  dependency.
+
+  If you would like to only lint projects where standard is a dependency there
+  is a new setting "disable_if_not_dependency" which you can set to true.
+
+  For more information about SublimeLinter settings see the docs:
+  http://www.sublimelinter.com/en/latest/settings.html

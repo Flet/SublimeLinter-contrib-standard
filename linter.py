@@ -32,7 +32,7 @@ class Standard(NodeLinter):
     npm_name = 'standard'
     defaults = {
         'enable_if_dependency': True,
-        'disable_if_not_dependency': True
+        'disable_if_not_dependency': False
     }
 
     def run(self, cmd, code):
