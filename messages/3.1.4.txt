@@ -1,0 +1,6 @@
+SublimeLinter-contrib-standard
+-------------------------------
+
+3.1.4
+
+- Fix SublimeLinter-conrib-standard to work with SublimeLinter 4.
