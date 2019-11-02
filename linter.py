@@ -17,7 +17,7 @@ class Standard(NodeLinter):
     """Provides an interface to standard."""
 
     cmd = 'standard --stdin --verbose'
-    name = 'Standard'
+    name = 'standard'
     regex = r'^\s.+:(?P<line>\d+):(?P<col>\d+):(?P<message>.+)'
 
     defaults = {
