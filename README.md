@@ -30,4 +30,4 @@ If you would like to contribute enhancements or fixes, please do the following:
 3. Commit and push the topic branch.
 4. Make a pull request.
 
-Please note: contributions should follow the guidelines specified in the [pyproject.toml](./pyproject.toml) file. (**flake8**, **black** with minor tweaks).
+Contributions should follow the guidelines specified in the [pyproject.toml](./pyproject.toml) file. (**flake8**, **black**).
