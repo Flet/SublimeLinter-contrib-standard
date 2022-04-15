@@ -1,6 +1,6 @@
 # SublimeLinter-contrib-standard
 
-Linter plugin for [SublimeLinter](https://www.sublimelinter.com/en/latest/) to provide linting with [standardjs](https://standardjs.com/). It will be used with files that match `source.js` and `source.jsx`
+[SublimeLinter](https://www.sublimelinter.com/en/latest/) plugin to provide linting with [standardjs](https://standardjs.com/). Matching `.js` and `.jsx` source files.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ If a linter executable cannot be found, [follow these steps](http://sublimelinte
 
 ## Automatic Formatting
 
-Automatic formatting is not a task for a Linter. However it can be provided by the [StandardFormat](https://packagecontrol.io/packages/StandardFormat) package.
+Automatic formatting is not a task for a linter. However, it can be provided by the [StandardFormat](https://packagecontrol.io/packages/StandardFormat) package.
 
 ## Contributing
 
@@ -30,4 +30,4 @@ If you would like to contribute enhancements or fixes, please do the following:
 3. Commit and push the topic branch.
 4. Make a pull request.
 
-Please note: contributions should follow the guidelines specified in the `pyproject.toml` file. (**flake8**, **black** with minor tweaks).
+Please note: contributions should follow the guidelines specified in the [pyproject.toml](./pyproject.toml) file. (**flake8**, **black** with minor tweaks).
