@@ -1,0 +1,18 @@
+[tool.black]
+line-length = 79
+target-version = ['py33']
+include = '\.pyi?$'
+extend-exclude = '''
+# A regex preceded with ^/ will apply only to files and directories
+# in the root of the project.
+^/foo.py  # exclude a file named foo.py in the root of the project (in addition to the defaults)
+'''
+
+[tool.pyright]
+pythonVersion = '3.3'
+venvPath = ''
+venv = ''
+extraPaths = [
+        "/Applications/Sublime Text.app/Contents/MacOS/Lib/python33",
+        "/usr/local/Caskroom/miniconda/base/bin"
+    ]
