@@ -1,11 +1,11 @@
 # SublimeLinter-contrib-standard
 
-Linter plugin for [SublimeLinter][https://www.sublimelinter.com/en/latest/] to provide linting with [standardjs](https://standardjs.com/). It will be used with files that match `source.js` and `source.jsx`
+Linter plugin for [SublimeLinter](https://www.sublimelinter.com/en/latest/) to provide linting with [standardjs](https://standardjs.com/). It will be used with files that match `source.js` and `source.jsx`
 
 ## Requirements
 
-1. SublimeLinter is a requirement, please follow the installation instructions [here][https://www.sublimelinter.com/en/latest/installation.html].
-2. Standard JS is a requirement, please follow the installation instructions [here][https://standardjs.com/index.html#install].
+1. SublimeLinter is a requirement, please follow the installation instructions [here](https://www.sublimelinter.com/en/latest/installation.html).
+2. Standard JS is a requirement, please follow the installation instructions [here](https://standardjs.com/index.html#install).
 
 ## Install
 
