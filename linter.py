@@ -1,27 +1,18 @@
-#
-# linter.py
-# Linter for SublimeLinter3, a code checking framework for Sublime Text 3
-#
-# Written by Dan Flettre
-# Copyright (c) 2015 Dan Flettre
-#
-# License: MIT
-#
-
-"""This module exports the Standard plugin class."""
-
 from SublimeLinter.lint import NodeLinter
 
 
 class Standard(NodeLinter):
-    """Provides an interface to standard."""
-
-    cmd = 'standard --stdin --verbose'
-    name = 'Standard'
-    regex = r'^\s.+:(?P<line>\d+):(?P<col>\d+):(?P<message>.+)'
-
+    name = "standard"
+    cmd = "standard --stdin"
+    regex = r"^.+:(?P<line>\d+):(?P<col>\d+):\s*(?P<message>.+)"
+    multiline = True
     defaults = {
-        'enable_if_dependency': True,
-        'disable_if_not_dependency': False,
-        'selector': 'source.js, source.jsx'
+        "selector": "source.js, source.jsx",
+        "disable_if_not_dependency": False,
     }
+
+    def run(self, cmd, code):
+        if not self.context.get("file"):
+            self.notify_failure()
+            return "-:1:1:The file must be saved before it can be linted by standard"
+        return super().run(cmd, code)
